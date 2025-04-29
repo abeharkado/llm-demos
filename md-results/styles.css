@@ -1,1 +1,289 @@
+/* Reset and base styles */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
 
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.6;
+    color: #333;
+    background-color: #f5f5f5;
+    padding: 20px;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    padding: 30px;
+}
+
+h1 {
+    color: #2c3e50;
+    text-align: center;
+    margin-bottom: 20px;
+    padding-bottom: 15px;
+    border-bottom: 2px solid #eee;
+}
+
+h2 {
+    color: #3498db;
+    margin: 20px 0;
+}
+
+/* View toggle buttons */
+.view-toggle {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.view-toggle button {
+    background-color: #f5f5f5;
+    border: 1px solid #ddd;
+    padding: 10px 20px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: all 0.3s ease;
+}
+
+.view-toggle button:first-child {
+    border-radius: 4px 0 0 4px;
+}
+
+.view-toggle button:last-child {
+    border-radius: 0 4px 4px 0;
+}
+
+.view-toggle button.active {
+    background-color: #3498db;
+    color: white;
+    border-color: #3498db;
+}
+
+/* Results container */
+.results-view {
+    animation: fadeIn 0.3s ease-in-out;
+}
+
+.results-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+    margin-top: 20px;
+}
+
+.results-grid {
+    flex: 1;
+    min-width: 300px;
+}
+
+.chart-container {
+    flex: 1;
+    min-height: 400px;
+    min-width: 300px;
+    position: relative;
+}
+
+/* County selector */
+.county-selector {
+    margin: 20px 0;
+}
+
+.county-selector label {
+    font-weight: bold;
+    margin-right: 10px;
+}
+
+.county-selector select {
+    padding: 8px 15px;
+    border-radius: 4px;
+    border: 1px solid #ddd;
+    font-size: 16px;
+    min-width: 200px;
+}
+
+/* Results table styling */
+.results-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    padding: 12px 15px;
+    border-bottom: 1px solid #eee;
+}
+
+.results-row.header {
+    font-weight: bold;
+    background-color: #f9f9f9;
+    border-bottom: 2px solid #ddd;
+}
+
+.results-row.total {
+    font-weight: bold;
+    background-color: #f5f5f5;
+}
+
+.results-row > div {
+    padding: 0 10px;
+}
+
+.results-row > div:first-child {
+    padding-left: 15px;
+}
+
+/* Bar chart styling */
+.bar-chart-container {
+    width: 100%;
+    padding: 20px 10px;
+}
+
+.bar-container {
+    margin-bottom: 15px;
+    display: flex;
+    align-items: center;
+}
+
+.bar-label {
+    width: 70px;
+    font-weight: bold;
+    text-align: right;
+    padding-right: 10px;
+}
+
+.bar-wrapper {
+    flex-grow: 1;
+    background-color: #f5f5f5;
+    border-radius: 4px;
+    overflow: hidden;
+    position: relative;
+    height: 30px;
+    box-shadow: inset 0 0 0 1px rgba(0,0,0,0.1);
+}
+
+.bar {
+    height: 100%;
+    transition: width 0.8s ease-out;
+    position: relative;
+    display: flex;
+    align-items: center;
+    animation: slideIn 1s ease-out;
+}
+
+.bar-value {
+    padding: 0 10px;
+    font-size: 14px;
+    color: white;
+    text-shadow: 1px 1px 0 rgba(0,0,0,0.3);
+    white-space: nowrap;
+}
+
+@keyframes slideIn {
+    from {
+        width: 0;
+    }
+}
+
+/* County title with winner */
+.winner {
+    font-size: 0.9em;
+    font-weight: normal;
+    margin-left: 10px;
+}
+
+/* First bar container highlighting */
+.bar-container:first-child {
+    position: relative;
+}
+
+.bar-container:first-child::before {
+    content: "Winner";
+    position: absolute;
+    right: 100%;
+    margin-right: 10px;
+    font-size: 12px;
+    font-weight: bold;
+    color: #333;
+    background-color: rgba(255,255,0,0.2);
+    padding: 2px 6px;
+    border-radius: 4px;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+/* First row highlighting in county view */
+#county-results .results-row:nth-child(2) {
+    background-color: rgba(255,255,0,0.1);
+}
+
+/* For small screens, adjust the bar label */
+@media (max-width: 576px) {
+    .bar-container {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    
+    .bar-label {
+        width: 100%;
+        text-align: left;
+        margin-bottom: 5px;
+    }
+}
+
+/* Tooltip for chart */
+.chart-tooltip {
+    position: absolute;
+    background-color: rgba(0, 0, 0, 0.8);
+    color: white;
+    padding: 8px 12px;
+    border-radius: 4px;
+    font-size: 14px;
+    pointer-events: none;
+    z-index: 1000;
+}
+
+/* Utility classes */
+.hidden {
+    display: none;
+}
+
+/* Animations */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .results-container {
+        flex-direction: column;
+    }
+    
+    .container {
+        padding: 15px;
+    }
+    
+    h1 {
+        font-size: 24px;
+    }
+    
+    h2 {
+        font-size: 20px;
+    }
+    
+    .bar-container:first-child::before {
+        top: 0;
+        left: 0;
+        right: auto;
+        margin-right: 0;
+        transform: none;
+    }
+}

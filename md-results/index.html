@@ -1,1 +1,41 @@
-
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Maryland 2024 Election Results</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Maryland 2024 Election Results</h1>
+        
+        <div class="view-toggle">
+            <button id="statewide-btn" class="active">Statewide Results</button>
+            <button id="county-btn">County Results</button>
+        </div>
+        
+        <div id="statewide-view" class="results-view">
+            <h2>Statewide Totals</h2>
+            <div class="results-container">
+                <div id="state-results" class="results-grid"></div>
+                <div id="state-chart" class="chart-container"></div>
+            </div>
+        </div>
+        
+        <div id="county-view" class="results-view hidden">
+            <div class="county-selector">
+                <label for="county-dropdown">Select County:</label>
+                <select id="county-dropdown"></select>
+            </div>
+            <h2 id="county-title">County Results</h2>
+            <div class="results-container">
+                <div id="county-results" class="results-grid"></div>
+                <div id="county-chart" class="chart-container"></div>
+            </div>
+        </div>
+    </div>
+    
+    <script src="script.js"></script>
+</body>
+</html>
